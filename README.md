@@ -10,19 +10,71 @@ You're enabling security gates in Bitbucket Pipelines. The default branch passes
 2. Enable the hardened security gates
 3. Fix the security issues to get a green build
 
-##  Quick Start
+## 📋 Prerequisites
+
+### Required Software
+- **Git** - For cloning and version control
+- **Node.js 20+** - For running the TypeScript application
+- **npm** - Node package manager (comes with Node.js)
+- **Docker** - For container scanning and building
+- **Python 3.8+** - For security tools
+- **pip** - Python package manager
+
+### Security Tools (Install before workshop)
+```bash
+# Install via pip
+pip install semgrep checkov
+
+# Install via package manager
+# macOS (Homebrew)
+brew install trivy syft
+
+# Ubuntu/Debian
+sudo apt-get update
+sudo apt-get install -y wget apt-transport-https gnupg lsb-release
+wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+echo "deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
+sudo apt-get update
+sudo apt-get install trivy
+
+# Install Syft
+curl -sSfL https://raw.githubusercontent.com/anchore/syft/main/install.sh | sh -s -- -b /usr/local/bin
+
+# Windows (Chocolatey)
+choco install trivy
+# Syft: Download from GitHub releases
+```
+
+### System Requirements
+- **RAM**: 4GB minimum, 8GB recommended
+- **Storage**: 2GB free space
+- **OS**: macOS, Linux, or Windows with WSL2
+- **Network**: Internet connection for tool downloads
+
+### Docker Setup
+```bash
+# macOS: Install Docker Desktop from docker.com
+# Linux: Install Docker Engine
+sudo systemctl start docker
+sudo systemctl enable docker
+
+# Verify Docker is running
+docker --version
+docker run hello-world
+```
+
+## 🚀 Quick Start
 
 ```bash
+# Clone the repository
+git clone https://github.com/mlnas/BuildBreaker.git
+cd BuildBreaker
+
 # Setup local tools
 make setup
 
-# Install security tools (required for hardened pipeline)
-pip install semgrep checkov
-brew install trivy syft
-
-# Start Docker (required for container scanning)
-# On macOS: Start Docker Desktop
-# On Linux: sudo systemctl start docker
+# Verify all tools are installed
+./test-setup.sh
 
 # Run basic pipeline (should pass)
 make pass
