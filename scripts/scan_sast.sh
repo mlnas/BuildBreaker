@@ -11,7 +11,7 @@ SAST_MAX_HIGH=${SAST_MAX_HIGH:-0}
 SAST_MAX_MEDIUM=${SAST_MAX_MEDIUM:-2}
 
 # Run Semgrep analysis
-semgrep --config=p/typescript --error --json --output artifacts/semgrep.json app/
+semgrep --config=.semgrep.yml --error --json --output artifacts/semgrep.json app/
 
 # Count findings by severity
 if command -v jq >/dev/null 2>&1; then

@@ -7,7 +7,7 @@ print_section "Secrets Scanning"
 # Simple pattern-based secrets scanning
 scan_patterns() {
   found_secrets=0
-  patterns="AKIA[0-9A-Z]{16}|-----BEGIN.*PRIVATE KEY-----|password=|secret=|token="
+  patterns="AKIA[0-9A-Z]{16}|-----BEGIN.*PRIVATE KEY-----|password=|secret=|token=|sk-[0-9a-f]{32}|admin123"
   
   # Search for patterns in all files except those in .git, node_modules, and scripts
   results=$(find . -type f -not -path "*/\.*" -not -path "*/node_modules/*" -not -path "*/scripts/*" -exec grep -l -E "$patterns" {} \;)

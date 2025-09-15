@@ -1,0 +1,44 @@
+rules:
+  - id: sql-injection-string-concat
+    patterns:
+      - pattern: |
+          $QUERY = "SELECT * FROM $TABLE WHERE id = " + $ID
+      - pattern: |
+          $QUERY = "SELECT * FROM $TABLE WHERE id = " + $ID + $MORE
+    message: "SQL injection vulnerability: String concatenation in SQL query"
+    languages: [typescript, javascript]
+    severity: ERROR
+
+  - id: weak-crypto-md5
+    patterns:
+      - pattern: |
+          crypto.createHash('md5')
+      - pattern: |
+          crypto.createHash("md5")
+    message: "Weak cryptographic hash: MD5 is cryptographically broken"
+    languages: [typescript, javascript]
+    severity: ERROR
+
+  - id: ssrf-no-validation
+    patterns:
+      - pattern: |
+          fetch($URL)
+      - pattern: |
+          $HTTP.get($URL)
+      - pattern: |
+          $HTTP.post($URL)
+    message: "Potential SSRF vulnerability: No URL validation before fetch"
+    languages: [typescript, javascript]
+    severity: WARNING
+
+  - id: hardcoded-secrets
+    patterns:
+      - pattern: |
+          password = "$PASSWORD"
+      - pattern: |
+          secret = "$SECRET"
+      - pattern: |
+          token = "$TOKEN"
+    message: "Hardcoded secret detected"
+    languages: [typescript, javascript]
+    severity: ERROR

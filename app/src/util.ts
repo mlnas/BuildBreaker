@@ -24,3 +24,7 @@ export const mockDb = {
     { id: '2', amount: 200 }
   ]
 };
+
+// SECURITY ISSUE: Hardcoded credentials (for demo purposes)
+const apiKey = "sk-1234567890abcdef1234567890abcdef";
+const dbPassword = "admin123";
