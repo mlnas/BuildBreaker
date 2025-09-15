@@ -2,7 +2,7 @@
 
 A hands-on workshop for implementing security gates in Bitbucket Pipelines. This repo contains a deliberately vulnerable application and infrastructure code to practice implementing and fixing security controls.
 
-## 🎯 Challenge
+##  Challenge
 
 You're enabling security gates in Bitbucket Pipelines. The default branch passes with minimal checks. Your task is to:
 
@@ -10,7 +10,7 @@ You're enabling security gates in Bitbucket Pipelines. The default branch passes
 2. Enable the hardened security gates
 3. Fix the security issues to get a green build
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 # Setup local tools
@@ -31,7 +31,7 @@ make pass
 make fail
 ```
 
-## 🔍 Security Gates
+##  Security Gates
 
 The hardened pipeline implements these security checks:
 
@@ -43,7 +43,7 @@ The hardened pipeline implements these security checks:
 6. **SBOM**: Software Bill of Materials generation
 7. **Image Signing**: Simulated container image signature verification
 
-## 🛠️ Known Issues to Fix
+##  Known Issues to Fix
 
 ### Application (app/)
 - SQL injection risk in query building
@@ -59,7 +59,7 @@ The hardened pipeline implements these security checks:
 - Base image with known vulnerabilities
 - Running as root user
 
-## 🎓 Workshop Flow
+## Steps
 
 1. Clone this repo
 2. Create branch: `git checkout -b hardened/yourname`
@@ -67,7 +67,7 @@ The hardened pipeline implements these security checks:
 4. Fix the issues one by one
 5. Re-run `make fail` until all checks pass
 
-## 📊 Scoring Rubric
+## Points
 
 | Task | Points |
 |------|---------|
@@ -78,7 +78,7 @@ The hardened pipeline implements these security checks:
 | Implement signing simulation | 2 pts |
 | Bonus: Zero HIGH/CRITICAL in container | 3 pts |
 
-## 🔧 Local Development
+## Local Development
 
 ```bash
 # Install dependencies
@@ -91,7 +91,7 @@ npm run dev
 docker build -t build-breaker:workshop .
 ```
 
-## 🚦 Security Gate Configuration
+##  Security Gate Configuration
 
 Thresholds are configurable via environment variables:
 
@@ -100,7 +100,7 @@ Thresholds are configurable via environment variables:
 - `SCA_MAX_HIGH`: Maximum high-severity dependency issues (default: 0)
 - `IMG_MAX_HIGH`: Maximum high-severity container issues (default: 0)
 
-## 📝 Allow Lists
+## Allow Lists
 
 - `.trivyignore`: Allowlist for Trivy findings
 - `.checkov.yaml`: Policy skips for Checkov
