@@ -10,7 +10,7 @@ You're enabling security gates in Bitbucket Pipelines. The default branch passes
 2. Enable the hardened security gates
 3. Fix the security issues to get a green build
 
-## 📋 Prerequisites
+##  Prerequisites
 
 ### Required Software
 - **Git** - For cloning and version control
@@ -45,11 +45,6 @@ choco install trivy
 # Syft: Download from GitHub releases
 ```
 
-### System Requirements
-- **RAM**: 4GB minimum, 8GB recommended
-- **Storage**: 2GB free space
-- **OS**: macOS, Linux, or Windows with WSL2
-- **Network**: Internet connection for tool downloads
 
 ### Docker Setup
 ```bash
@@ -63,7 +58,7 @@ docker --version
 docker run hello-world
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 # Clone the repository
